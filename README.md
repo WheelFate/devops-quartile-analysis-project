@@ -29,20 +29,40 @@ Our simulated DevOps metric data is in `devops_metrics.csv`.
 We'll use a spreadsheet for easy calculation and visualization.
 
 1.  **Open Google Sheets:** Go to [sheets.google.com](https://docs.google.com/spreadsheets/create) and create a new blank spreadsheet. (If you prefer, you can use Excel Online via your Microsoft account).
-2.  **Paste Data:** Paste the copied raw CSV data into cell `A1` of your new spreadsheet.
+2.  **Paste Data:** Paste the copied raw CSV data into cell **A1** of your new spreadsheet. Make sure "LeadTimeForChanges_Hours" is in A1, and your numbers are in A2 down to A21.
 3.  **Sort the Data:**
-    * Select the entire column containing your data (Column A).
+    * Select the entire column containing your data (**Column A**).
     * Go to **Data -> Sort range**.
     * Check "Data has header row" and select "LeadTimeForChanges_Hours" for sorting.
     * Choose **"A -> Z"** (ascending order).
 4.  **Calculate Quartiles using Functions:**
-    In separate cells (e.g., B1, B2, B3), enter the following formulas:
-    * **Q1 (25th percentile):** `=QUARTILE(A2:A21, 1)` (Assumes your data is in A2 to A21. Adjust range if needed.)
-    * **Q2 (Median/50th percentile):** `=QUARTILE(A2:A21, 2)`
-    * **Q3 (75th percentile):** `=QUARTILE(A2:A21, 3)`
-    * **IQR:** `=B3-B1` (If Q3 is in B3 and Q1 is in B1)
+    In separate cells (e.g., B1, B2, B3), enter the following formulas. **Ensure your data is in the range A2:A21.** If your data range is different, adjust the `A2:A21` part of the formulas accordingly.
 
-You will now see the calculated quartile values.
+    * **Q1 (25th percentile):**
+        ```excel
+        =QUARTILE(A2:A21, 1)
+        ```
+        *Enter this into an empty cell, for example, cell B1.*
+
+    * **Q2 (Median/50th percentile):**
+        ```excel
+        =QUARTILE(A2:A21, 2)
+        ```
+        *Enter this into an empty cell, for example, cell B2.*
+
+    * **Q3 (75th percentile):**
+        ```excel
+        =QUARTILE(A2:A21, 3)
+        ```
+        *Enter this into an empty cell, for example, cell B3.*
+
+    * **IQR (Interquartile Range):**
+        ```excel
+        =B3-B1
+        ```
+        *Enter this into an empty cell, for example, cell B4. This formula assumes you placed Q1 in B1 and Q3 in B3. If you put them in different cells, update `B3` and `B1` to match their actual locations.*
+
+    You will now see the calculated quartile values.
 
 ### Step 3: Verify with an Online Quartile Calculator
 
@@ -85,6 +105,8 @@ A box plot is the best way to visualize quartiles.
     * Go to **Insert -> Chart**.
     * Under "Chart type," look for **"Box chart"** (sometimes called "Box and whisker chart").
     * Google Sheets will generate a box plot showing Q1, Q2 (median), Q3, and often outliers.
+
+[Image of a box plot example]
 
 This visual will make it much easier to grasp the distribution of your lead times.
 
