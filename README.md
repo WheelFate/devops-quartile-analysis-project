@@ -40,7 +40,7 @@ We'll use a spreadsheet for easy calculation and visualization.
     * Check "Data has header row" and select "LeadTimeForChanges_Hours" for sorting.
     * Choose "**A -> Z**" (ascending order).
 4.  **Calculate Quartiles using Functions:**
-    In separate cells (e.g., B1, B2, B3), enter the following formulas. **Ensure your data is in the range A2:A21.** If your data range is different (e.g., if you have more or less data points), you **must** adjust the `A2:A21` part of the formulas accordingly.
+    In separate cells (e.g., B1, B2, B3), enter the following formulas. **These formulas correctly assume your numerical data is in the range A2:A21 (excluding the header in A1).** If your data range is different (e.g., more or fewer data points, or if your header is elsewhere), you **must** adjust the `A2:A21` part of the formulas accordingly.
 
     * **Q1 (25th percentile):**
         ```excel
@@ -72,7 +72,7 @@ We'll use a spreadsheet for easy calculation and visualization.
 
 It's good practice to cross-check your calculations.
 
-1.  **Copy Just the Numbers:** From your sorted Google Sheet, copy only the numerical data (e.g., A2:A21).
+1.  **Copy Just the Numbers:** From your sorted Google Sheet, copy **only the numerical data** (e.g., A2:A21).
 2.  **Go to an online calculator:** Visit a website like [https://www.calculatorsoup.com/calculators/statistics/quartile-calculator.php](https://www.calculatorsoup.com/calculators/statistics/quartile-calculator.php) (or search for "online quartile calculator").
 3.  **Paste Data:** Paste your numbers into the input box (usually one number per line or separated by commas).
 4.  **Calculate:** Click the "Calculate" or "Compute" button.
@@ -109,7 +109,7 @@ Let's assume your calculated quartiles are something like:
 A box plot is the best way to visualize quartiles.
 
 1.  **In Google Sheets:**
-    * Select your data column (e.g., A1:A21).
+    * Select your data column (e.g., A1:A21). **Note:** While the `QUARTILE` function excludes non-numeric cells, for chart creation it's often easiest to select the entire column, then remove the header if the chart wizard includes it. Or, just select the numeric range (A2:A21).
     * Go to **Insert -> Chart**.
     * Under "Chart type," look for "**Box chart**" (sometimes called "Box and whisker chart").
     * Google Sheets will generate a box plot showing Q1, Q2 (median), Q3, and often outliers.
