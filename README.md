@@ -26,37 +26,35 @@ Our simulated DevOps metric data is in `devops_metrics.csv`.
 
 1.  Click on the `devops_metrics.csv` file in this repository.
 2.  Click the "**Raw**" button. This will show you the plain CSV data.
-3.  **Copy all the data** (including the header "LeadTimeForChanges_Hours").
+3.  **Copy only the numerical data** (do not copy the "LeadTimeForChanges_Hours" header if it exists in your source CSV, as we're pasting directly starting from A1).
 
 ### Step 2: Analyze Data in Google Sheets (or Excel Online)
 
 We'll use a spreadsheet for easy calculation and visualization.
 
 1.  **Open Google Sheets:** Go to [sheets.google.com](https://docs.google.com/spreadsheets/create) and create a new blank spreadsheet. (If you prefer, you can use Excel Online via your Microsoft account).
-2.  **Paste Data:** Paste the copied raw CSV data into cell **A1** of your new spreadsheet. Make sure "LeadTimeForChanges_Hours" is in A1, and your numbers are in A2 down to A21.
+2.  **Paste Data:** Paste the copied numerical data into cell **A1** of your new spreadsheet. Your numbers should now be in A1 down to A20.
 3.  **Sort the Data:**
     * Select the entire column containing your data (**Column A**).
-    * Go to **Data -> Sort range**.
-    * Check "Data has header row" and select "LeadTimeForChanges_Hours" for sorting.
-    * Choose "**A -> Z**" (ascending order).
+    * Go to **Data -> Sort range -> Sort column A, A -> Z**. (Since there's no header row now, just select the column and sort ascending).
 4.  **Calculate Quartiles using Functions:**
-    In separate cells (e.g., B1, B2, B3), enter the following formulas. **These formulas correctly assume your numerical data is in the range A2:A21 (excluding the header in A1).** If your data range is different (e.g., more or fewer data points, or if your header is elsewhere), you **must** adjust the `A2:A21` part of the formulas accordingly.
+    In separate cells (e.g., B1, B2, B3), enter the following formulas. **These formulas assume your numerical data is precisely in the range A1:A20.** If your data range is different (e.g., more or fewer data points), you **must** adjust the `A1:A20` part of the formulas accordingly.
 
     * **Q1 (25th percentile):**
         ```excel
-        =QUARTILE(A2:A21, 1)
+        =QUARTILE(A1:A20, 1)
         ```
         *Enter this into an empty cell, for example, cell B1.*
 
     * **Q2 (Median/50th percentile):**
         ```excel
-        =QUARTILE(A2:A21, 2)
+        =QUARTILE(A1:A20, 2)
         ```
         *Enter this into an empty cell, for example, cell B2.*
 
     * **Q3 (75th percentile):**
         ```excel
-        =QUARTILE(A2:A21, 3)
+        =QUARTILE(A1:A20, 3)
         ```
         *Enter this into an empty cell, for example, cell B3.*
 
@@ -72,7 +70,7 @@ We'll use a spreadsheet for easy calculation and visualization.
 
 It's good practice to cross-check your calculations.
 
-1.  **Copy Just the Numbers:** From your sorted Google Sheet, copy **only the numerical data** (e.g., A2:A21).
+1.  **Copy Just the Numbers:** From your sorted Google Sheet, copy **only the numerical data** (e.g., A1:A20).
 2.  **Go to an online calculator:** Visit a website like [https://www.calculatorsoup.com/calculators/statistics/quartile-calculator.php](https://www.calculatorsoup.com/calculators/statistics/quartile-calculator.php) (or search for "online quartile calculator").
 3.  **Paste Data:** Paste your numbers into the input box (usually one number per line or separated by commas).
 4.  **Calculate:** Click the "Calculate" or "Compute" button.
@@ -109,7 +107,7 @@ Let's assume your calculated quartiles are something like:
 A box plot is the best way to visualize quartiles.
 
 1.  **In Google Sheets:**
-    * Select your data column (e.g., A1:A21). **Note:** While the `QUARTILE` function excludes non-numeric cells, for chart creation it's often easiest to select the entire column, then remove the header if the chart wizard includes it. Or, just select the numeric range (A2:A21).
+    * Select your data column (e.g., A1:A20).
     * Go to **Insert -> Chart**.
     * Under "Chart type," look for "**Box chart**" (sometimes called "Box and whisker chart").
     * Google Sheets will generate a box plot showing Q1, Q2 (median), Q3, and often outliers.
