@@ -6,6 +6,8 @@ Welcome to your hands-on project for learning DevOps quartile analysis! This pro
 
 To understand how to calculate and interpret quartiles for common DevOps metrics, specifically "Lead Time for Changes."
 
+---
+
 ## What are Quartiles?
 
 Quartiles divide a dataset into four equal parts:
@@ -14,15 +16,17 @@ Quartiles divide a dataset into four equal parts:
 * **Q3 (Third Quartile):** The value below which 75% of the data falls.
 * **Interquartile Range (IQR):** The range between Q1 and Q3 ($IQR = Q3 - Q1$), representing the middle 50% of the data.
 
+---
+
 ## Step-by-Step Guide
 
 ### Step 1: Access the Raw Data
 
 Our simulated DevOps metric data is in `devops_metrics.csv`.
 
-* Click on the `devops_metrics.csv` file in this repository.
-* Click the "Raw" button. This will show you the plain CSV data.
-* Copy all the data (including the header "LeadTimeForChanges_Hours").
+1.  Click on the `devops_metrics.csv` file in this repository.
+2.  Click the "**Raw**" button. This will show you the plain CSV data.
+3.  **Copy all the data** (including the header "LeadTimeForChanges_Hours").
 
 ### Step 2: Analyze Data in Google Sheets (or Excel Online)
 
@@ -34,9 +38,9 @@ We'll use a spreadsheet for easy calculation and visualization.
     * Select the entire column containing your data (**Column A**).
     * Go to **Data -> Sort range**.
     * Check "Data has header row" and select "LeadTimeForChanges_Hours" for sorting.
-    * Choose **"A -> Z"** (ascending order).
+    * Choose "**A -> Z**" (ascending order).
 4.  **Calculate Quartiles using Functions:**
-    In separate cells (e.g., B1, B2, B3), enter the following formulas. **Ensure your data is in the range A2:A21.** If your data range is different, adjust the `A2:A21` part of the formulas accordingly.
+    In separate cells (e.g., B1, B2, B3), enter the following formulas. **Ensure your data is in the range A2:A21.** If your data range is different (e.g., if you have more or less data points), you **must** adjust the `A2:A21` part of the formulas accordingly.
 
     * **Q1 (25th percentile):**
         ```excel
@@ -60,7 +64,7 @@ We'll use a spreadsheet for easy calculation and visualization.
         ```excel
         =B3-B1
         ```
-        *Enter this into an empty cell, for example, cell B4. This formula assumes you placed Q1 in B1 and Q3 in B3. If you put them in different cells, update `B3` and `B1` to match their actual locations.*
+        *Enter this into an empty cell, for example, cell B4. This formula assumes you placed the Q1 calculation in cell B1 and the Q3 calculation in cell B3. If you put them in different cells, update `B3` and `B1` to match their actual locations.*
 
     You will now see the calculated quartile values.
 
@@ -73,6 +77,8 @@ It's good practice to cross-check your calculations.
 3.  **Paste Data:** Paste your numbers into the input box (usually one number per line or separated by commas).
 4.  **Calculate:** Click the "Calculate" or "Compute" button.
 5.  **Compare:** Verify that the Q1, Q2, and Q3 values match what you calculated in Google Sheets.
+
+---
 
 ### Step 4: Interpret the Results for DevOps
 
@@ -96,6 +102,8 @@ Let's assume your calculated quartiles are something like:
 * **Set Targets:** Instead of aiming to reduce the "average" lead time (which can be skewed by outliers), you can aim to reduce your Q3, meaning you're improving the speed of your slower deployments. Or, strive to get more deployments into the Q1 category.
 * **Outlier Detection:** Look at data points significantly above Q3 + (1.5 * IQR). These are potential outliers that indicate exceptional issues (e.g., a deployment that took 10+ hours when most are under 4). Investigate these specific cases!
 
+---
+
 ### Step 5: Visualize with a Box Plot (Optional but Recommended)
 
 A box plot is the best way to visualize quartiles.
@@ -103,12 +111,14 @@ A box plot is the best way to visualize quartiles.
 1.  **In Google Sheets:**
     * Select your data column (e.g., A1:A21).
     * Go to **Insert -> Chart**.
-    * Under "Chart type," look for **"Box chart"** (sometimes called "Box and whisker chart").
+    * Under "Chart type," look for "**Box chart**" (sometimes called "Box and whisker chart").
     * Google Sheets will generate a box plot showing Q1, Q2 (median), Q3, and often outliers.
 
-[Image of a box plot example]
+
 
 This visual will make it much easier to grasp the distribution of your lead times.
+
+---
 
 ### Step 6: Expand Your Learning (Self-Directed)
 
